@@ -1,0 +1,341 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pavel Dolgirev</title>
+<meta name="description" content="Pavel E. Dolgirev, theoretical physicist working on AI, quantum computing and materials design.">
+<meta property="og:title" content="Pavel Dolgirev">
+<meta property="og:description" content="Theoretical physicist working on AI, quantum computing and materials design.">
+<meta property="og:image" content="https://dolgirev.pe/avatar.jpg">
+<meta property="og:url" content="https://dolgirev.pe/">
+<link rel="icon" href="avatar.jpg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{
+  --bg:#FFFFFF; --ink:#111316; --muted:#5C636B; --faint:#8C939A; --line:#E6E8EA; --soft:#F5F6F7;
+  --accent:#C8102E; --hl:#FFF4D6; --coffee:#FFDD00;
+  --serif:"Newsreader",Georgia,"Times New Roman",serif;
+  --sans:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+  color-scheme:light;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 16px/1.65 var(--sans);-webkit-font-smoothing:antialiased;padding-inline:clamp(16px,4vw,32px)}
+.wrap{max-width:800px;margin:0 auto}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:2px}
+img{max-width:100%}
+
+.top{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:baseline;gap:8px 20px;padding-block:28px 0}
+.mark{font:500 20px/1 var(--mono);letter-spacing:-.01em;text-decoration:none}
+.mark span{color:var(--accent)}
+.top nav{font:400 14px/1 var(--mono);color:var(--muted);display:flex;gap:6px;flex-wrap:wrap}
+.top nav a{text-decoration:none}
+.top nav a:hover{color:var(--ink)}
+.top nav i{font-style:normal;color:var(--line)}
+
+.intro{display:grid;grid-template-columns:auto minmax(0,1fr);gap:28px;align-items:center;padding-block:56px 32px}
+.avatar{width:148px;height:148px;border-radius:50%;object-fit:cover;display:block;background:var(--soft)}
+h1{font:400 clamp(38px,6vw,52px)/1.02 var(--serif);letter-spacing:-.02em;margin:0 0 10px}
+.role{margin:0;color:var(--muted);font-size:16px}
+.bio{display:grid;gap:14px;margin:0 0 24px;max-width:62ch}
+.bio p{margin:0;font:400 19px/1.6 var(--serif)}
+.facts{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:4px;color:var(--muted);font-size:15px}
+.facts b{color:var(--ink);font-weight:500}
+.links{display:flex;flex-wrap:wrap;gap:8px 18px;font:400 14px/1.6 var(--mono)}
+.links a,.copy{text-decoration:none;border-bottom:1px solid var(--line)}
+.links a:hover,.copy:hover{border-color:var(--ink)}
+.copy{appearance:none;border-top:0;border-inline:0;background:none;padding:0;font:inherit;color:inherit;cursor:pointer}
+.copy small{color:var(--faint);margin-left:6px;font-size:12px}
+
+section{padding-block:56px 8px}
+h2{font:400 34px/1.1 var(--serif);letter-spacing:-.015em;margin:0 0 8px}
+.sub{margin:0 0 24px;color:var(--muted);font-size:15px;max-width:62ch}
+
+/* research focus */
+.focus{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px 40px}
+.area h3{margin:0 0 6px;font:500 13px/1.3 var(--mono);letter-spacing:.06em;text-transform:uppercase}
+.area h3 span{color:var(--accent);margin-right:8px}
+.area p{margin:0 0 10px;font-size:15px}
+.area ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.area li{font:400 15.5px/1.35 var(--serif)}
+.area li a{text-decoration:none;border-bottom:1px solid var(--line)}
+.area li a:hover{border-color:var(--ink)}
+.area li small{font:400 12px var(--mono);color:var(--faint);margin-left:6px;white-space:nowrap}
+.soon{font:400 12px var(--mono);color:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:2px}
+
+/* publications */
+.record{display:flex;flex-wrap:wrap;gap:6px 22px;margin:0 0 20px;font:400 13px/1.4 var(--mono);color:var(--muted)}
+.record b{color:var(--ink);font-weight:500}
+.years{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;flex-wrap:wrap;gap:4px 14px;padding-block:12px;border-block:1px solid var(--line);font:400 13px/1.6 var(--mono)}
+.years a{text-decoration:none;color:var(--faint)}
+.years a:hover,.years a.on{color:var(--ink)}
+.years input{margin-left:auto;flex:0 1 220px;min-width:0;height:30px;border:1px solid var(--line);border-radius:6px;padding:0 10px;font:400 13px var(--sans);color:var(--ink);background:var(--bg)}
+.year{display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;border-bottom:1px solid var(--line);scroll-margin-top:60px}
+.yl{padding-top:22px}
+.yl div{position:sticky;top:70px}
+.yl b{display:block;font:400 44px/1 var(--serif);letter-spacing:-.02em;font-variant-numeric:lining-nums}
+.yl small{font:400 12px var(--mono);color:var(--faint)}
+.list{list-style:none;margin:0;padding:0}
+.pub{padding-block:20px;display:grid;gap:6px;scroll-margin-top:70px;transition:background .6s}
+.pub+.pub{border-top:1px dashed var(--line)}
+.pub.flash{background:var(--hl)}
+.pub h4{margin:0;font:500 19.5px/1.3 var(--serif);text-wrap:balance}
+.authors{margin:0;font-size:13.5px;color:var(--muted)}
+.authors b{color:var(--ink);font-weight:600}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;font:400 12.5px/1.4 var(--mono);color:var(--muted)}
+.venue{color:var(--ink)}
+.venue i{font-style:normal;color:var(--accent)}
+.lk{display:inline-flex;gap:6px}
+.lk a{text-decoration:none;padding:2px 8px;border:1px solid var(--line);border-radius:4px;color:var(--ink)}
+.lk a:hover{border-color:var(--ink)}
+.empty{padding:32px 0;color:var(--muted)}
+
+.support p{max-width:60ch;margin:0 0 20px}
+.coffee{display:inline-flex;align-items:center;gap:10px;height:48px;padding:0 22px;border-radius:12px;background:var(--coffee);color:#111316;font:600 16px/1 var(--sans);text-decoration:none;transition:transform .15s}
+.coffee:hover{transform:translateY(-1px)}
+.coffee svg{width:22px;height:22px}
+
+footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;margin-top:56px;padding-block:22px 40px;border-top:1px solid var(--line);font:400 12.5px/1.5 var(--mono);color:var(--faint)}
+
+@media (max-width:640px){
+  .intro{grid-template-columns:1fr;gap:20px;padding-block:36px 24px}
+  .avatar{width:112px;height:112px}
+  .focus{grid-template-columns:1fr;gap:28px}
+  .year{grid-template-columns:1fr;gap:0}
+  .yl div{position:static;display:flex;align-items:baseline;gap:12px}
+  .yl b{font-size:36px}
+  .years input{flex-basis:100%;margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#top" id="top">dolgirev<span>.</span>pe</a>
+    <nav aria-label="Primary">
+      <a href="#research">research</a><i>|</i>
+      <a href="#publications">publications</a><i>|</i>
+      <a href="#support">support</a>
+    </nav>
+  </header>
+
+  <div class="intro">
+    <img class="avatar" src="avatar.jpg" alt="Pavel Dolgirev" width="480" height="480">
+    <div>
+      <h1>Pavel Dolgirev</h1>
+      <p class="role">Theoretical physicist</p>
+    </div>
+  </div>
+
+  <div class="bio">
+    <p>I am a theorist who loves breakthrough science and the computational technology that makes it possible.</p>
+    <p>I build methods to understand and design quantum matter: variational wave functions, kinetic solvers, quantum algorithms, and now AI. I care about real materials, so much of my work is done together with experimental groups.</p>
+  </div>
+  <ul class="facts">
+    <li><b>Postdoctoral Fellow</b>, Theoretical Quantum Optics, University of Maryland</li>
+    <li><b>Ph.D. in Physics</b>, Harvard University, with Mikhail Lukin and Eugene Demler</li>
+    <li><b>Previously</b> Visiting Scientist at QuEra Computing, leading AI and Hamiltonian-learning work</li>
+  </ul>
+  <div class="links">
+    <a href="https://scholar.google.ca/citations?user=OqoUtD8AAAAJ&amp;hl=en" target="_blank" rel="noopener">google scholar</a>
+    <a href="https://github.com/PashaDolgirev" target="_blank" rel="noopener">github</a>
+    <button class="copy" id="copy-email" type="button">p.e.dolgirev@gmail.com<small id="copy-label">copy</small></button>
+  </div>
+
+  <section id="research">
+    <h2>Research</h2>
+    <p class="sub">What I care about most right now.</p>
+    <div class="focus">
+      <div class="area">
+        <h3><span>01</span>AI for science</h3>
+        <p>Machine learning that does real scientific work, from neural architectures with physical priors to agents that run research loops. <span class="soon">upcoming</span></p>
+        <ul>
+          <li><a href="https://github.com/PashaDolgirev" target="_blank" rel="noopener">Code and experiments on GitHub</a></li>
+          <li><a href="#p-mlpot">Machine learning scheme for fast extraction of chemically interpretable interatomic potentials</a><small>2016</small></li>
+        </ul>
+      </div>
+      <div class="area">
+        <h3><span>02</span>Quantum computing</h3>
+        <p>Using programmable quantum hardware as a scientific instrument: for material design, and to explore many-body dynamics that classical computers cannot reach.</p>
+        <ul>
+          <li><a href="#p-iqs">Inverse quantum simulation for quantum material design</a><small>2026</small></li>
+          <li><a href="#p-preth">Probing emergent prethermal dynamics and resonant melting on a programmable quantum simulator</a><small>Nature, accepted</small></li>
+          <li><a href="#p-coars">Quantum coarsening and collective dynamics on a programmable simulator</a><small>Nature 2025</small></li>
+        </ul>
+      </div>
+      <div class="area">
+        <h3><span>03</span>Material design</h3>
+        <p>Computational methods that make the properties of real materials computable, and ultimately designable.</p>
+        <ul>
+          <li><a href="#p-gmm">Accelerating analysis of Boltzmann equations using Gaussian mixture models</a><small>PRR 2024</small></li>
+          <li><a href="#p-lr2d">Linear response across interaction regimes in two-dimensional ferromagnets</a><small>2026</small></li>
+          <li><a href="#p-iqs">Inverse quantum simulation for quantum material design</a><small>2026</small></li>
+          <li><a href="#p-mlpot">Machine learning scheme for interatomic potentials</a><small>2016</small></li>
+        </ul>
+      </div>
+      <div class="area">
+        <h3><span>04</span>Theory with experiment</h3>
+        <p>Close collaborations with experimental groups at Harvard, MIT, ETH Zurich and the Max Planck Institute in Hamburg.</p>
+        <ul>
+          <li><a href="#p-magnon">Magnon hydrodynamics in an atomically-thin ferromagnet</a><small>Science 2026</small></li>
+          <li><a href="#p-wigner">Signatures of Wigner crystal of electrons in a monolayer semiconductor</a><small>Nature 2021</small></li>
+          <li><a href="#p-bilayer">Optical signatures of interlayer electron coherence in a bilayer semiconductor</a><small>Nat. Phys. 2025</small></li>
+          <li><a href="#p-licdw">Light-induced charge density wave in LaTe₃</a><small>Nat. Phys. 2020</small></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+    <div class="record" aria-label="Publication record">
+      <span><b>43</b> papers</span><span>Nature <b>×3</b></span><span>Science <b>×1</b></span>
+      <span>Nature Physics <b>×6</b></span><span>Phys. Rev. X <b>×2</b></span><span>Phys. Rev. Lett. <b>×4</b></span><span>PNAS <b>×1</b></span>
+    </div>
+    <div class="years" id="years" aria-label="Jump to year"></div>
+    <div id="out"></div>
+    <p class="sub" style="margin-top:14px">* equal contribution</p>
+  </section>
+
+  <section id="support" class="support">
+    <h2>Support</h2>
+    <p>If my work or this site has been useful to you, you can buy me a coffee.</p>
+    <a class="coffee" id="coffee" href="#" target="_blank" rel="noopener">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13v5a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6V8z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 2.5c0 1 1 1 1 2s-1 1-1 2M12 2.5c0 1 1 1 1 2s-1 1-1 2"/></svg>
+      Buy me a coffee
+    </a>
+  </section>
+
+  <footer>
+    <span>© 2026 Pavel E. Dolgirev</span>
+    <span id="visits" hidden></span>
+  </footer>
+</div>
+
+<script>
+/* ===== Settings: edit these two lines ===== */
+const GOATCOUNTER = "dolgirev";                             // your GoatCounter code (dolgirev.goatcounter.com)
+const COFFEE_URL  = "https://buymeacoffee.com/dolgirev";    // your Buy Me a Coffee page
+/* ========================================== */
+document.getElementById("coffee").href = COFFEE_URL;
+
+/* Papers: y = year, t = title, a = authors, v = venue, j = journal link, ar = arXiv ID, id = anchor used by the Research section */
+const P = [
+ {"y": 2026, "t": "Linear response across interaction regimes in two-dimensional ferromagnets", "a": "A. Muller, P. E. Dolgirev, O. Malyshev, E. Demler", "v": "Preprint", "st": "Preprint", "ar": "2608.14477", "id": "lr2d"},
+ {"y": 2026, "t": "Theory of Two-Qubit Spectroscopy of Quantum Many-Body Systems", "a": "H. Hosseinabadi, P. E. Dolgirev, S. Gopalakrishnan, A. Yacoby, E. Demler, J. Marino", "v": "Preprint", "st": "Preprint", "ar": "2603.18176"},
+ {"y": 2026, "t": "Inverse quantum simulation for quantum material design", "a": "C. Kokail*, P. E. Dolgirev*, R. V. Bijnen, D. Gonzalez-Cuadra, M. D. Lukin, P. Zoller", "v": "Preprint", "st": "Preprint", "ar": "2601.12239", "id": "iqs"},
+ {"y": 2026, "t": "Probing emergent prethermal dynamics and resonant melting on a programmable quantum simulator", "a": "S. Darbha*, A. Khudorozhkov*, P. L. S. Lopes, F. Liu, E. Rrapaj, J. Balewski, M. Hamdan, P. E. Dolgirev, A. Schuckert, K. Klymko, S.-T. Wang, M. D. Lukin, D. Camps, M. Kornjaca", "v": "Nature (accepted)", "st": "Accepted", "ar": "2510.11706", "id": "preth"},
+ {"y": 2026, "t": "Time-domain identification of distinct mechanisms for competing charge density waves in a rare-earth tritelluride", "a": "Y. Su*, B. Q. Lv*, A. Zong*, A. Muller, S. Chattopadhyay, P. E. Dolgirev, A. G. Singh, J. A. W. Straquadine, D. Choi, D. Azoury, M. Mogi, I. R. Fisher, E. Demler, N. Gedik", "v": "Nat. Phys. (2026)", "ar": "2503.13936", "j": "https://doi.org/10.1038/s41567-026-03382-5"},
+ {"y": 2026, "t": "Magnon hydrodynamics in an atomically-thin ferromagnet", "a": "R. Xue*, N. Maksimovic*, P. E. Dolgirev, L.-Q. Xia, A. Muller, R. Kitagawa, F. Machado, D. R. Klein, D. MacNeill, K. Watanabe, T. Taniguchi, P. Jarillo-Herrero, M. D. Lukin, E. Demler, A. Yacoby", "v": "Science 392, 873–878 (2026)", "ar": "2403.01057", "j": "https://www.science.org/doi/10.1126/science.adp2397", "id": "magnon"},
+ {"y": 2026, "t": "Efficient variational approach to the Fermi polaron problem in two dimensions, both in and out of equilibrium", "a": "Y.-F. Qu, P. E. Dolgirev, E. Demler, T. Shi", "v": "Phys. Rev. Research 8, 023071 (2026)", "ar": "2209.10998", "j": "https://link.aps.org/doi/10.1103/6syc-njc5", "id": "polaron2d"},
+ {"y": 2025, "t": "Role of phase fluctuation in dynamic competition between charge order and superconductivity in cuprates", "a": "M. Kang*, P. E. Dolgirev*, C. C. Zhang, H. Jang, B. Lee, M. Kim, S.-Y. Park, R. Sutarto, E. Demler, J.-H. Park, J. Y. T. Wei, R. Comin", "v": "Preprint", "st": "Preprint", "ar": "2510.26763"},
+ {"y": 2025, "t": "Gap Inhomogeneity in Cuprates: a view from Two-Dimensional Josephson Echo Spectroscopy", "a": "A. G. Salvador, I. Morera, M. H. Michael, P. E. Dolgirev, D. Pavicevic, A. Liu, A. Cavalleri, E. Demler", "v": "Preprint", "st": "Preprint", "ar": "2509.23856"},
+ {"y": 2025, "t": "Wideband covariance magnetometry below the diffraction limit", "a": "X. H. Le, P. E. Dolgirev, P. Put, E. L. Peterson, A. Pillai, A. A. Zibrov, E. Demler, H. Park, M. D. Lukin", "v": "Phys. Rev. Lett. 135, 170803 (2025)", "ar": "2505.00260", "j": "https://doi.org/10.1103/7xlj-52xt"},
+ {"y": 2025, "t": "Enhanced coherent terahertz emission from critical superconducting fluctuations in YBa₂Cu₃O₆.₆", "a": "D. Nicoletti, M. Rosenberg, M. Buzzi, M. Fechner, M. H. Michael, P. E. Dolgirev, E. Demler, R. A. Vitalone, D. N. Basov, Y. Liu, S. Nakata, B. Keimer, A. Cavalleri", "v": "Phys. Rev. X (accepted)", "st": "Accepted", "ar": "2504.02568"},
+ {"y": 2025, "t": "Two-dimensional spectroscopy of bosonic collective excitations in disordered many-body systems", "a": "A. G. Salvador*, I. Morera*, M. H. Michael, P. E. Dolgirev, D. Pavicevic, A. Liu, A. Cavalleri, E. Demler", "v": "Preprint", "st": "Preprint", "ar": "2501.16856"},
+ {"y": 2025, "t": "Optical signatures of interlayer electron coherence in a bilayer semiconductor", "a": "X. Liu*, N. Leisgang*, P. E. Dolgirev*, A. A. Zibrov, J. Sung, J. Wang, T. Taniguchi, K. Watanabe, V. Walther, H. Park, E. Demler, P. Kim, M. D. Lukin", "v": "Nat. Phys. (2025)", "ar": "2409.08329", "j": "https://www.nature.com/articles/s41567-025-02971-0", "id": "bilayer"},
+ {"y": 2025, "t": "Quantum coarsening and collective dynamics on a programmable simulator", "a": "T. Manovitz*, S. H. Li*, S. Ebadi*, R. Samajdar, A. A. Geim, S. J. Evered, D. Bluvstein, H. Zhou, N. U. Koyluoglu, J. Feldmeier, P. E. Dolgirev, N. Maskara, M. Kalinowski, S. Sachdev, D. A. Huse, M. Greiner, V. Vuletic, M. D. Lukin", "v": "Nature 638, 86–92 (2025)", "ar": "2407.03249", "j": "https://www.nature.com/articles/s41586-024-08353-5", "id": "coars"},
+ {"y": 2024, "t": "Principles of 2D terahertz spectroscopy of collective excitations: the case of Josephson plasmons in layered superconductors", "a": "A. G. Salvador*, P. E. Dolgirev*, M. H. Michael*, A. Liu*, D. Pavicevic, M. Fechner, A. Cavalleri, E. Demler", "v": "Phys. Rev. B 110, 094514 (2024)", "ar": "2401.05503", "j": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.110.094514"},
+ {"y": 2024, "t": "Local noise spectroscopy of Wigner crystals in two-dimensional materials", "a": "P. E. Dolgirev*, I. Esterlis*, A. A. Zibrov, M. D. Lukin, T. Giamarchi, E. Demler", "v": "Phys. Rev. Lett. 132, 246504 (2024)", "ar": "2308.16243", "j": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.132.246504"},
+ {"y": 2024, "t": "Probing Inhomogeneous Cuprate Superconductivity by Terahertz Josephson Echo Spectroscopy", "a": "A. Liu, D. Pavicevic, M. H. Michael, A. G. Salvador, P. E. Dolgirev, M. Fechner, A. S. Disa, P. M. Lozano, Q. Li, G. D. Gu, E. Demler, A. Cavalleri", "v": "Nat. Phys. 20, 1751–1756 (2024)", "ar": "2308.14849", "j": "https://www.nature.com/articles/s41567-024-02643-5"},
+ {"y": 2024, "t": "Accelerating analysis of Boltzmann equations using Gaussian mixture models: Application to quantum Bose-Fermi mixtures", "a": "P. E. Dolgirev, K. Seetharam, M. Kanasz-Nagy, C. Robens, Z. Z. Yan, M. Zwierlein, E. Demler", "v": "Phys. Rev. Research 6, 033017 (2024)", "ar": "2304.09911", "j": "https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.6.033017", "id": "gmm"},
+ {"y": 2024, "t": "Collective flow of fermionic impurities immersed in a Bose-Einstein Condensate", "a": "Z. Z. Yan, Y. Ni, A. Chuang, P. E. Dolgirev, K. Seetharam, E. Demler, C. Robens, M. Zwierlein", "v": "Nat. Phys. 20, 1395–1400 (2024)", "ar": "2304.07663", "j": "https://www.nature.com/articles/s41567-024-02541-w"},
+ {"y": 2024, "t": "Optically-induced Umklapp shift currents in striped cuprates", "a": "P. E. Dolgirev, M. H. Michael, J. B. Curtis, D. E. Parker, D. Nicoletti, M. Buzzi, M. Fechner, A. Cavalleri, E. Demler", "v": "Phys. Rev. B 109, 045150 (2024)", "ar": "2203.04687", "j": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.109.045150"},
+ {"y": 2023, "t": "Theory for Anomalous Terahertz Emission in Striped Cuprate Superconductors", "a": "P. E. Dolgirev*, M. H. Michael*, J. B. Curtis, D. Nicoletti, M. Buzzi, M. Fechner, A. Cavalleri, E. Demler", "v": "Phys. Rev. B 108, L180508 (2023)", "ar": "2112.05772", "j": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.108.L180508"},
+ {"y": 2022, "t": "Coherent Emission from Surface Josephson Plasmons in Striped Cuprates", "a": "D. Nicoletti, M. Buzzi, M. Fechner, P. E. Dolgirev, M. H. Michael, J. B. Curtis, E. Demler, G. D. Gu, A. Cavalleri", "v": "PNAS 119(39), e2211670119 (2022)", "ar": "2111.14904", "j": "https://www.pnas.org/doi/full/10.1073/pnas.2211670119"},
+ {"y": 2022, "t": "Characterizing two-dimensional superconductivity via nanoscale noise magnetometry with single-spin qubits", "a": "P. E. Dolgirev*, S. Chatterjee*, I. Esterlis, A. A. Zibrov, M. D. Lukin, N. Y. Yao, E. Demler", "v": "Phys. Rev. B 105, 024507 (2022)", "ar": "2106.05283", "j": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.105.024507"},
+ {"y": 2022, "t": "Single-spin qubit magnetic spectroscopy of two-dimensional superconductivity", "a": "S. Chatterjee*, P. E. Dolgirev*, I. Esterlis, A. A. Zibrov, M. D. Lukin, N. Y. Yao, E. Demler", "v": "Phys. Rev. Research 4, L012001 (2022)", "ar": "2106.03859", "j": "https://journals.aps.org/prresearch/abstract/10.1103/PhysRevResearch.4.L012001"},
+ {"y": 2022, "t": "Periodic dynamics in superconductors induced by an impulsive optical quench", "a": "P. E. Dolgirev, A. Zong, M. H. Michael, J. B. Curtis, D. Podolsky, A. Cavalleri, E. Demler", "v": "Commun. Phys. 5, 234 (2022)", "ar": "2104.07181", "j": "https://www.nature.com/articles/s42005-022-01007-w"},
+ {"y": 2021, "t": "Role of equilibrium fluctuations in light-induced order", "a": "A. Zong*, P. E. Dolgirev*, A. Kogar*, Y. Su, X. Shen, J. A. W. Straquadine, X. Wang, D. Luo, M. E. Kozina, A. H. Reid, R. Li, J. Yang, S. P. Weathersby, S. Park, E. J. Sie, P. Jarillo-Herrero, I. R. Fisher, X. Wang, E. Demler, N. Gedik", "v": "Phys. Rev. Lett. 127, 227401 (2021)", "ar": "2110.00865", "j": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.127.227401"},
+ {"y": 2021, "t": "Signatures of Wigner crystal of electrons in a monolayer semiconductor", "a": "T. Smoleński, P. E. Dolgirev, C. Kuhlenkamp, A. Popert, Y. Shimazaki, P. Back, X. Lu, M. Kroner, K. Watanabe, T. Taniguchi, I. Esterlis, E. Demler, A. Imamoglu", "v": "Nature 595, 53–57 (2021)", "ar": "2010.03078", "j": "https://www.nature.com/articles/s41586-021-03590-4", "id": "wigner"},
+ {"y": 2021, "t": "Emergence of a sharp quantum collective mode in a one-dimensional Fermi polaron", "a": "P. E. Dolgirev*, Y.-F. Qu*, M. B. Zvonarev, T. Shi, E. Demler", "v": "Phys. Rev. X 11, 041015 (2021)", "ar": "2008.02416", "j": "https://journals.aps.org/prx/abstract/10.1103/PhysRevX.11.041015", "id": "polaron1d"},
+ {"y": 2020, "t": "Non-Gaussian correlations imprinted by local dephasing in fermionic wires", "a": "P. E. Dolgirev, J. Marino, D. Sels, E. Demler", "v": "Phys. Rev. B 102, 100301 (2020)", "j": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.102.100301"},
+ {"y": 2020, "t": "Phase-sensitive thermoelectricity and long-range Josephson effect supported by thermal gradient", "a": "M. S. Kalenkov, P. E. Dolgirev, A. D. Zaikin", "v": "Phys. Rev. B 101, 180505 (2020)", "ar": "1912.03834", "j": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.101.180505"},
+ {"y": 2020, "t": "Self-similar dynamics of order parameter fluctuations in pump-probe experiments", "a": "P. E. Dolgirev, M. H. Michael, A. Zong, N. Gedik, E. Demler", "v": "Phys. Rev. B 101, 174306 (2020)", "ar": "1910.02518", "j": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.101.174306"},
+ {"y": 2020, "t": "Amplitude dynamics of charge density wave in LaTe₃: theoretical description of pump-probe experiments", "a": "P. E. Dolgirev, A. V. Rozhkov, A. Zong, A. Kogar, N. Gedik, B. V. Fine", "v": "Phys. Rev. B 101, 054203 (2020)", "ar": "1904.09795", "j": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.101.054203"},
+ {"y": 2020, "t": "Light-Induced Charge Density Wave in LaTe₃", "a": "A. Kogar*, A. Zong*, P. E. Dolgirev, X. Shen, J. Straquadine, Y.-Q. Bie, X. Wang, T. Rohwer, I.-C. Tung, Y. Yang, R. Li, J. Yang, S. Weathersby, S. Park, M. E. Kozina, E. J. Sie, H. Wen, P. Jarillo-Herrero, I. R. Fisher, X. Wang, N. Gedik", "v": "Nat. Phys. 16, 159 (2020)", "ar": "1904.07472", "j": "https://www.nature.com/articles/s41567-019-0705-3", "id": "licdw"},
+ {"y": 2019, "t": "Phase coherent electron transport in asymmetric cross-like Andreev interferometers", "a": "P. E. Dolgirev, M. S. Kalenkov, A. E. Tarkhov, A. D. Zaikin", "v": "Phys. Rev. B 100, 054511 (2019)", "ar": "1906.07305", "j": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.100.054511"},
+ {"y": 2019, "t": "Dynamical slowing down in an ultrafast photo-induced phase transition", "a": "A. Zong, P. E. Dolgirev, A. Kogar, E. Ergecen, M. B. Yilmaz, Y.-Q. Bie, T. Rohwer, I.-C. Tung, J. Straquadine, X. Wang, Y. Yang, X. Shen, R. Li, J. Yang, S. Park, M. C. Hoffmann, B. K. Ofori-Okai, M. E. Kozina, H. Wen, X. Wang, I. R. Fisher, P. Jarillo-Herrero, N. Gedik", "v": "Phys. Rev. Lett. 123, 097601 (2019)", "ar": "1902.10109", "j": "https://journals.aps.org/prl/abstract/10.1103/PhysRevLett.123.097601"},
+ {"y": 2019, "t": "Interplay between Josephson and Aharonov-Bohm effects in Andreev interferometers", "a": "P. E. Dolgirev, M. S. Kalenkov, A. D. Zaikin", "v": "Sci. Rep. 9, 1301 (2019)", "ar": "1807.10339", "j": "https://www.nature.com/articles/s41598-018-37653-w"},
+ {"y": 2019, "t": "Topology-controlled thermopower oscillations in multiterminal Andreev interferometers", "a": "P. E. Dolgirev, M. S. Kalenkov, A. D. Zaikin", "v": "Phys. Status Solidi RRL 13 (2019)", "ar": "1806.06882", "j": "https://onlinelibrary.wiley.com/doi/10.1002/pssr.201800252"},
+ {"y": 2019, "t": "Evidence for topological defects in a photoinduced phase transition", "a": "A. Zong*, A. Kogar*, Y.-Q. Bie, T. Rohwer, C. Lee, E. Baldini, E. Ergecen, M. B. Yilmaz, B. Freelon, E. J. Sie, H. Zhou, J. Straquadine, P. Walmsley, P. E. Dolgirev, A. V. Rozhkov, I. R. Fisher, P. Jarillo-Herrero, B. V. Fine, N. Gedik", "v": "Nat. Phys. 15, 27 (2019)", "j": "https://www.nature.com/articles/s41567-018-0311-9"},
+ {"y": 2018, "t": "Current-phase relation and flux-dependent thermoelectricity in Andreev interferometers", "a": "P. E. Dolgirev, M. S. Kalenkov, A. D. Zaikin", "v": "Phys. Rev. B 97, 054521 (2018)", "ar": "1711.05531", "j": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.97.054521"},
+ {"y": 2017, "t": "Pseudogap and Fermi surface in the presence of spin-vortex checkerboard for 1/8-doped lanthanum cuprates", "a": "P. E. Dolgirev, B. V. Fine", "v": "Phys. Rev. B 96, 075137 (2017)", "ar": "1705.08542", "j": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.96.075137"},
+ {"y": 2016, "t": "Machine learning scheme for fast extraction of chemically interpretable interatomic potentials", "a": "P. E. Dolgirev, I. A. Kruglov, A. R. Oganov", "v": "AIP Advances 6, 085318 (2016)", "j": "https://pubs.aip.org/aip/adv/article/6/8/085318/871659", "id": "mlpot"},
+ {"y": 2014, "t": "On some properties of confocal conics", "a": "P. E. Dolgirev", "v": "J. Class. Geom. 3, 4–11 (2014)", "j": "https://jcgeometry.org/Articles/Volume3/JCG2014V2pp4-11.pdf"},
+ {"y": 2011, "t": "On lines in a triangle tangent to a conic", "a": "P. E. Dolgirev", "v": "arXiv:1101.3283 (2011); Math. Education (in Russian)", "ar": "1101.3283"}
+];
+
+const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
+const authors = a => esc(a).replace(/P\. E\. Dolgirev\*?/, m => "<b>" + m + "</b>");
+const venue = v => esc(v).replace(/\((accepted)\)/, "<i>$1</i>");
+const years = [...new Set(P.map(p => p.y))];
+
+document.getElementById("years").innerHTML =
+  years.map(y => '<a href="#y' + y + '">' + y + "</a>").join("") +
+  '<input id="q" type="search" placeholder="Search papers" aria-label="Search papers">';
+
+function render(q){
+  q = (q || "").trim().toLowerCase();
+  const list = P.filter(p => !q || (p.t + " " + p.a + " " + p.v).toLowerCase().includes(q));
+  const out = document.getElementById("out");
+  if (!list.length){ out.innerHTML = '<p class="empty">No papers match.</p>'; return; }
+  out.innerHTML = [...new Set(list.map(p => p.y))].map(y => {
+    const ps = list.filter(p => p.y === y);
+    return '<section class="year" id="y' + y + '" style="padding:0"><div class="yl"><div><b>' + y + "</b><small>" +
+      ps.length + (ps.length === 1 ? " paper" : " papers") + '</small></div></div><ol class="list">' +
+      ps.map(p => {
+        const L = [];
+        if (p.j) L.push('<a href="' + esc(p.j) + '" target="_blank" rel="noopener">journal</a>');
+        if (p.ar) L.push('<a href="https://arxiv.org/abs/' + p.ar + '" target="_blank" rel="noopener">arXiv</a>',
+                         '<a href="https://arxiv.org/pdf/' + p.ar + '" target="_blank" rel="noopener">pdf</a>');
+        return '<li class="pub"' + (p.id ? ' id="p-' + p.id + '"' : "") + "><h4>" + esc(p.t) + "</h4>" +
+          '<p class="authors">' + authors(p.a) + "</p>" +
+          '<div class="meta"><span class="venue">' + venue(p.v) + '</span><span class="lk">' + L.join("") + "</span></div></li>";
+      }).join("") + "</ol></section>";
+  }).join("");
+}
+render();
+document.getElementById("q").addEventListener("input", e => render(e.target.value));
+
+/* Research links: clear search, scroll to the paper, flash it */
+document.querySelectorAll('.area a[href^="#p-"]').forEach(a => a.addEventListener("click", e => {
+  const q = document.getElementById("q"); if (q.value){ q.value = ""; render(); }
+  const el = document.querySelector(a.getAttribute("href")); if (!el) return;
+  e.preventDefault(); el.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center"});
+  el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 1800);
+}));
+
+document.getElementById("copy-email").addEventListener("click", () => {
+  const lab = document.getElementById("copy-label");
+  const done = t => { lab.textContent = t; setTimeout(() => lab.textContent = "copy", 1600); };
+  try { navigator.clipboard.writeText("p.e.dolgirev@gmail.com").then(() => done("copied"), () => done("")); } catch(e){ done(""); }
+});
+
+/* Visit counter (GoatCounter): records this visit, then shows the site-wide total in the footer */
+(function(){
+  if (!GOATCOUNTER || !/^https?:$/.test(location.protocol)) return;
+  const base = "https://" + GOATCOUNTER + ".goatcounter.com";
+  function showTotal(){
+    fetch(base + "/counter/TOTAL.json").then(r => r.ok ? r.json() : null).then(d => {
+      if (!d || !d.count) return;
+      const el = document.getElementById("visits");
+      el.textContent = d.count + " visits"; el.hidden = false;
+    }).catch(() => {});
+  }
+  const s = document.createElement("script");
+  s.async = true; s.src = "https://gc.zgo.at/count.js";
+  s.dataset.goatcounter = base + "/count";
+  s.onload = () => setTimeout(showTotal, 600);
+  s.onerror = showTotal;
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
