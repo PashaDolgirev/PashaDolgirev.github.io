@@ -194,7 +194,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;ma
   <section id="support" class="support">
     <h2>Support</h2>
     <p>If my work or this site has been useful to you, you can buy me a coffee.</p>
-    <a class="coffee" id="coffee" href="#" target="_blank" rel="noopener">
+    <a class="coffee" id="coffee" href="https://buymeacoffee.com/pasha_dolgirev" target="_blank" rel="noopener">
       <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 8h13v5a6 6 0 0 1-6 6h-1a6 6 0 0 1-6-6V8z"/><path d="M17 10h1.5a2.5 2.5 0 0 1 0 5H17"/><path d="M8 2.5c0 1 1 1 1 2s-1 1-1 2M12 2.5c0 1 1 1 1 2s-1 1-1 2"/></svg>
       Buy me a coffee
     </a>
@@ -211,7 +211,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;ma
 const GOATCOUNTER = "dolgirev";                             // your GoatCounter code (dolgirev.goatcounter.com)
 const COFFEE_URL  = "https://buymeacoffee.com/pasha_dolgirev";    // your Buy Me a Coffee page
 /* ========================================== */
-document.getElementById("coffee").href = COFFEE_URL;
+if (COFFEE_URL) document.getElementById("coffee").href = COFFEE_URL;
 
 /* Papers: y = year, t = title, a = authors, v = venue, j = journal link, ar = arXiv ID, id = anchor used by the Research section */
 const P = [
