@@ -256,7 +256,7 @@ const P = [
  {"y": 2018, "t": "Current-phase relation and flux-dependent thermoelectricity in Andreev interferometers", "a": "P. E. Dolgirev, M. S. Kalenkov, A. D. Zaikin", "v": "Phys. Rev. B 97, 054521 (2018)", "ar": "1711.05531", "j": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.97.054521"},
  {"y": 2017, "t": "Pseudogap and Fermi surface in the presence of spin-vortex checkerboard for 1/8-doped lanthanum cuprates", "a": "P. E. Dolgirev, B. V. Fine", "v": "Phys. Rev. B 96, 075137 (2017)", "ar": "1705.08542", "j": "https://journals.aps.org/prb/abstract/10.1103/PhysRevB.96.075137"},
  {"y": 2016, "t": "Machine learning scheme for fast extraction of chemically interpretable interatomic potentials", "a": "P. E. Dolgirev, I. A. Kruglov, A. R. Oganov", "v": "AIP Advances 6, 085318 (2016)", "j": "https://pubs.aip.org/aip/adv/article/6/8/085318/871659", "id": "mlpot"},
- {"y": 2014, "t": "On some properties of confocal conics", "a": "P. E. Dolgirev", "v": "J. Class. Geom. 3, 4–11 (2014)", "j": "https://jcgeometry.org/Articles/Volume3/JCG2014V2pp4-11.pdf"},
+ {"y": 2014, "t": "On some properties of confocal conics", "a": "P. E. Dolgirev", "v": "J. Class. Geom. 3, 4–11 (2014)", "j": "https://jcgeometry.org/Articles/Volume3/JCG2014V2pp4-11.pdf", "pdf": "papers/dolgirev-2014-confocal-conics.pdf"},
  {"y": 2011, "t": "On lines in a triangle tangent to a conic", "a": "P. E. Dolgirev", "v": "arXiv:1101.3283 (2011); Math. Education (in Russian)", "ar": "1101.3283"}
 ];
 
@@ -268,8 +268,9 @@ const cite = p => venue(p.v) + (/\(\d{4}\)/.test(p.v) ? "" : " (" + p.y + ")");
 document.getElementById("out").innerHTML = P.map(p => {
   const L = [];
   if (p.j) L.push('<a href="' + esc(p.j) + '" target="_blank" rel="noopener">journal</a>');
-  if (p.ar) L.push('<a href="https://arxiv.org/abs/' + p.ar + '" target="_blank" rel="noopener">arXiv</a>',
-                   '<a href="https://arxiv.org/pdf/' + p.ar + '" target="_blank" rel="noopener">pdf</a>');
+  if (p.ar) L.push('<a href="https://arxiv.org/abs/' + p.ar + '" target="_blank" rel="noopener">arXiv</a>');
+  const pdf = p.pdf || (p.ar && "https://arxiv.org/pdf/" + p.ar);
+  if (pdf) L.push('<a href="' + esc(pdf) + '" target="_blank" rel="noopener">pdf</a>');
   return '<li class="pub"' + (p.id ? ' id="p-' + p.id + '"' : "") + "><h4>" + esc(p.t) + "</h4>" +
     '<p class="authors">' + authors(p.a) + "</p>" +
     '<div class="meta"><span class="venue">' + cite(p) + '</span><span class="lk">' + L.join("") + "</span></div></li>";
