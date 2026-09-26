@@ -69,20 +69,13 @@ h2{font:400 34px/1.1 var(--serif);letter-spacing:-.015em;margin:0 0 8px}
 .soon{font:400 12px var(--mono);color:var(--accent);border:1px solid var(--accent);border-radius:4px;padding:1px 6px;margin-left:6px;vertical-align:2px}
 
 /* publications */
-.record{display:flex;flex-wrap:wrap;gap:6px 22px;margin:0 0 20px;font:400 13px/1.4 var(--mono);color:var(--muted)}
+.record{display:flex;flex-wrap:wrap;gap:4px 18px;margin:0 0 8px;padding-bottom:14px;border-bottom:1px solid var(--line);font:400 13px/1.5 var(--mono);color:var(--muted)}
+.record span{white-space:nowrap}
+h2 .n{font-size:.55em;color:var(--faint);letter-spacing:0;vertical-align:.12em}
 .record b{color:var(--ink);font-weight:500}
-.years{position:sticky;top:0;z-index:5;background:var(--bg);display:flex;flex-wrap:wrap;gap:4px 14px;padding-block:12px;border-block:1px solid var(--line);font:400 13px/1.6 var(--mono)}
-.years a{text-decoration:none;color:var(--faint)}
-.years a:hover,.years a.on{color:var(--ink)}
-.years input{margin-left:auto;flex:0 1 220px;min-width:0;height:30px;border:1px solid var(--line);border-radius:6px;padding:0 10px;font:400 13px var(--sans);color:var(--ink);background:var(--bg)}
-.year{display:grid;grid-template-columns:120px minmax(0,1fr);gap:24px;border-bottom:1px solid var(--line);scroll-margin-top:60px}
-.yl{padding-top:22px}
-.yl div{position:sticky;top:70px}
-.yl b{display:block;font:400 44px/1 var(--serif);letter-spacing:-.02em;font-variant-numeric:lining-nums}
-.yl small{font:400 12px var(--mono);color:var(--faint)}
 .list{list-style:none;margin:0;padding:0}
 .pub{padding-block:20px;display:grid;gap:6px;scroll-margin-top:70px;transition:background .6s}
-.pub+.pub{border-top:1px dashed var(--line)}
+.pub+.pub{border-top:1px solid var(--line)}
 .pub.flash{background:var(--hl)}
 .pub h4{margin:0;font:500 19.5px/1.3 var(--serif);text-wrap:balance}
 .authors{margin:0;font-size:13.5px;color:var(--muted)}
@@ -106,11 +99,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;ma
   .intro{grid-template-columns:1fr;gap:20px;padding-block:36px 24px}
   .avatar{width:112px;height:112px}
   .focus{grid-template-columns:1fr;gap:28px}
-  .year{grid-template-columns:1fr;gap:0}
-  .yl div{position:static;display:flex;align-items:baseline;gap:12px}
-  .yl b{font-size:36px}
-  .years input{flex-basis:100%;margin-left:0}
-}
+        }
 @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}*{transition:none!important}}
 </style>
 </head>
@@ -193,13 +182,12 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;ma
   </section>
 
   <section id="publications">
-    <h2>Publications</h2>
+    <h2>Publications <span class="n">(43 papers)</span></h2>
     <div class="record" aria-label="Publication record">
-      <span><b>43</b> papers</span><span>Nature <b>×3</b></span><span>Science <b>×1</b></span>
-      <span>Nature Physics <b>×6</b></span><span>Phys. Rev. X <b>×2</b></span><span>Phys. Rev. Lett. <b>×4</b></span><span>PNAS <b>×1</b></span>
+      <span>Nature <b>×3</b></span><span>Science <b>×1</b></span><span>Nature Physics <b>×6</b></span>
+      <span>Phys. Rev. X <b>×2</b></span><span>Phys. Rev. Lett. <b>×4</b></span><span>PNAS <b>×1</b></span>
     </div>
-    <div class="years" id="years" aria-label="Jump to year"></div>
-    <div id="out"></div>
+    <ol class="list" id="out"></ol>
     <p class="sub" style="margin-top:14px">* equal contribution</p>
   </section>
 
@@ -275,38 +263,20 @@ const P = [
 const esc = s => String(s).replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 const authors = a => esc(a).replace(/P\. E\. Dolgirev\*?/, m => "<b>" + m + "</b>");
 const venue = v => esc(v).replace(/\((accepted)\)/, "<i>$1</i>");
-const years = [...new Set(P.map(p => p.y))];
+const cite = p => venue(p.v) + (/\(\d{4}\)/.test(p.v) ? "" : " (" + p.y + ")");
 
-document.getElementById("years").innerHTML =
-  years.map(y => '<a href="#y' + y + '">' + y + "</a>").join("") +
-  '<input id="q" type="search" placeholder="Search papers" aria-label="Search papers">';
-
-function render(q){
-  q = (q || "").trim().toLowerCase();
-  const list = P.filter(p => !q || (p.t + " " + p.a + " " + p.v).toLowerCase().includes(q));
-  const out = document.getElementById("out");
-  if (!list.length){ out.innerHTML = '<p class="empty">No papers match.</p>'; return; }
-  out.innerHTML = [...new Set(list.map(p => p.y))].map(y => {
-    const ps = list.filter(p => p.y === y);
-    return '<section class="year" id="y' + y + '" style="padding:0"><div class="yl"><div><b>' + y + "</b><small>" +
-      ps.length + (ps.length === 1 ? " paper" : " papers") + '</small></div></div><ol class="list">' +
-      ps.map(p => {
-        const L = [];
-        if (p.j) L.push('<a href="' + esc(p.j) + '" target="_blank" rel="noopener">journal</a>');
-        if (p.ar) L.push('<a href="https://arxiv.org/abs/' + p.ar + '" target="_blank" rel="noopener">arXiv</a>',
-                         '<a href="https://arxiv.org/pdf/' + p.ar + '" target="_blank" rel="noopener">pdf</a>');
-        return '<li class="pub"' + (p.id ? ' id="p-' + p.id + '"' : "") + "><h4>" + esc(p.t) + "</h4>" +
-          '<p class="authors">' + authors(p.a) + "</p>" +
-          '<div class="meta"><span class="venue">' + venue(p.v) + '</span><span class="lk">' + L.join("") + "</span></div></li>";
-      }).join("") + "</ol></section>";
-  }).join("");
-}
-render();
-document.getElementById("q").addEventListener("input", e => render(e.target.value));
+document.getElementById("out").innerHTML = P.map(p => {
+  const L = [];
+  if (p.j) L.push('<a href="' + esc(p.j) + '" target="_blank" rel="noopener">journal</a>');
+  if (p.ar) L.push('<a href="https://arxiv.org/abs/' + p.ar + '" target="_blank" rel="noopener">arXiv</a>',
+                   '<a href="https://arxiv.org/pdf/' + p.ar + '" target="_blank" rel="noopener">pdf</a>');
+  return '<li class="pub"' + (p.id ? ' id="p-' + p.id + '"' : "") + "><h4>" + esc(p.t) + "</h4>" +
+    '<p class="authors">' + authors(p.a) + "</p>" +
+    '<div class="meta"><span class="venue">' + cite(p) + '</span><span class="lk">' + L.join("") + "</span></div></li>";
+}).join("");
 
 /* Research links: clear search, scroll to the paper, flash it */
 document.querySelectorAll('.area a[href^="#p-"]').forEach(a => a.addEventListener("click", e => {
-  const q = document.getElementById("q"); if (q.value){ q.value = ""; render(); }
   const el = document.querySelector(a.getAttribute("href")); if (!el) return;
   e.preventDefault(); el.scrollIntoView({behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth", block: "center"});
   el.classList.add("flash"); setTimeout(() => el.classList.remove("flash"), 1800);
