@@ -46,6 +46,9 @@ h1{font:400 clamp(38px,6vw,52px)/1.02 var(--serif);letter-spacing:-.02em;margin:
 .bio p{margin:0;font:400 19px/1.6 var(--serif)}
 .facts{list-style:none;margin:0 0 22px;padding:0;display:grid;gap:4px;color:var(--muted);font-size:15px}
 .facts b{color:var(--ink);font-weight:500}
+.facts li{display:grid;grid-template-columns:150px minmax(0,1fr);gap:16px;align-items:baseline}
+.facts time{font:400 13px/1.6 var(--mono);color:var(--faint);white-space:nowrap}
+@media (max-width:640px){.facts{gap:10px}.facts li{grid-template-columns:1fr;gap:0}}
 .links{display:flex;flex-wrap:wrap;gap:8px 18px;font:400 14px/1.6 var(--mono)}
 .links a,.copy{text-decoration:none;border-bottom:1px solid var(--line)}
 .links a:hover,.copy:hover{border-color:var(--ink)}
@@ -142,9 +145,10 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;ma
     <p>My main interests today are reinforcement learning for quantum and photonic hardware, to raise the algorithmic utility of these devices, and agentic AI that automates scientific discovery, the discovery of physical laws in particular. Much of my work centers on real materials and their design, often together with experimental groups.</p>
   </div>
   <ul class="facts">
-    <li><b>Postdoctoral Fellow</b>, Theoretical Quantum Optics, University of Maryland</li>
-    <li><b>Ph.D. in Physics</b>, Harvard University, with Mikhail Lukin and Eugene Demler</li>
-    <li><b>Previously</b> Visiting Scientist at QuEra Computing, leading AI and Hamiltonian-learning work</li>
+    <li><time>Nov 2026 – Feb 2027</time><span><b>Anthropic Fellow</b>, Anthropic</span></li>
+    <li><time>Apr – Oct 2026</time><span><b>Postdoctoral Fellow</b>, Theoretical Quantum Optics, University of Maryland</span></li>
+    <li><time>May 2025 – Mar 2026</time><span><b>Research Intern, then Visiting Scientist</b>, QuEra Computing, leading AI and Hamiltonian-learning work</span></li>
+    <li><time>2019 – 2026</time><span><b>Ph.D. in Physics</b>, Harvard University, with Mikhail Lukin and Eugene Demler</span></li>
   </ul>
   <div class="links">
     <a href="https://scholar.google.ca/citations?user=OqoUtD8AAAAJ&amp;hl=en" target="_blank" rel="noopener">google scholar</a>
