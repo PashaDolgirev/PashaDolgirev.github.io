@@ -160,6 +160,10 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;ma
     <h2>News</h2>
     <ul class="news">
       <li>
+        <time datetime="2026-10">Oct 2026</time>
+        <p>New preprint from my PhD work at Harvard: <a href="https://arxiv.org/abs/2610.28304" target="_blank" rel="noopener">Steady-state cooperative emission of interlayer excitons in atomically thin light-emitting diodes</a>. We studied the coherence properties of interlayer excitons and found that these can be strongly tuned electrically. The emitted light is most consistent with exciton superradiance, an unexpected and exciting discovery. On a personal note, this was a long and challenging multi-year project, and I am very happy to see it out.</p>
+      </li>
+      <li>
         <time datetime="2026-09-30">Sep 2026</time>
         <p>New release: <a href="https://github.com/PashaDolgirev/optical-PPO" target="_blank" rel="noopener">optical-PPO</a>. In a numerical experiment, I show that a tiny, noisy optical chip can learn by trial and error to balance a pole, swing up a pendulum and land a lunar module. A step toward optical computing.</p>
       </li>
@@ -227,7 +231,7 @@ footer{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px 16px;ma
   </section>
 
   <section id="publications">
-    <h2>Publications <span class="n">(43 papers)</span></h2>
+    <h2>Publications <span class="n">(44 papers)</span></h2>
     <div class="record" aria-label="Publication record">
       <span>Nature <b>×3</b></span><span>Science <b>×1</b></span><span>Nature Physics <b>×6</b></span>
       <span>Phys. Rev. X <b>×2</b></span><span>Phys. Rev. Lett. <b>×4</b></span><span>PNAS <b>×1</b></span>
@@ -260,6 +264,7 @@ if (COFFEE_URL) document.getElementById("coffee").href = COFFEE_URL;
 
 /* Papers: y = year, t = title, a = authors, v = venue, j = journal link, ar = arXiv ID, id = anchor used by the Research section */
 const P = [
+ {"y": 2026, "t": "Steady-state cooperative emission of interlayer excitons in atomically thin light-emitting diodes", "a": "A. M. Mier Valdivia, P. E. Dolgirev, G. H. Chen, N. Leisgang, A. Y. Joe, S. Ostermann, D. Thureja, Y. Zeng, D. Ding, D. Rhodes, B. Kim, S. Liu, T. Taniguchi, K. Watanabe, J. C. Hone, S. F. Yelin, H. Park, M. D. Lukin, P. Kim", "v": "Preprint", "ar": "2610.28304"},
  {"y": 2026, "t": "Linear response across interaction regimes in two-dimensional ferromagnets", "a": "A. Muller, P. E. Dolgirev, O. Malyshev, E. Demler", "v": "Preprint", "st": "Preprint", "ar": "2608.14477", "id": "lr2d"},
  {"y": 2026, "t": "Theory of Two-Qubit Spectroscopy of Quantum Many-Body Systems", "a": "H. Hosseinabadi, P. E. Dolgirev, S. Gopalakrishnan, A. Yacoby, E. Demler, J. Marino", "v": "Preprint", "st": "Preprint", "ar": "2603.18176"},
  {"y": 2026, "t": "Inverse quantum simulation for quantum material design", "a": "C. Kokail*, P. E. Dolgirev*, R. V. Bijnen, D. Gonzalez-Cuadra, M. D. Lukin, P. Zoller", "v": "Preprint", "st": "Preprint", "ar": "2601.12239", "id": "iqs"},
